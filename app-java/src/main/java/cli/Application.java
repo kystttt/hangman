@@ -1,5 +1,6 @@
-package academy;
+package cli;
 
+import academy.AppConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -67,6 +68,7 @@ public class Application implements Runnable {
             System.out.println(result);
         } else {
             LOGGER.atInfo().log("Interactive mode enabled");
+            System.out.println("Without args");
         }
     }
 

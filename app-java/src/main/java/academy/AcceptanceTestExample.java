@@ -10,8 +10,7 @@ public class AcceptanceTestExample {
 
     private AcceptanceTestExample() {
     }
-
-    // Используй вызов движка игры вместо хардкода тестовых данных
+    // Используй вызов движка игры вместо хардкода тестовых данных этот класс это заглушка неинтерактивного режима
     public static final Map<String, List<Map.Entry<Predicate<String>, Supplier<String>>>> TEST_CASES_DUMMY = Map.of(
         "волокно", List.of(
             entry("толокно"::equalsIgnoreCase, () -> "*олокно;NEG"),

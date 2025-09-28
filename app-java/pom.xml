@@ -74,12 +74,12 @@
         <palantir-java-format.version>2.73.0</palantir-java-format.version>
         <!-- PMD -->
         <maven-pmd-plugin.version>3.27.0</maven-pmd-plugin.version>
-        <pmd.version>7.16.0</pmd.version>
+        <pmd.version>7.5.0</pmd.version>
         <!-- Modernizer -->
         <modernizer-maven-plugin.version>3.1.0</modernizer-maven-plugin.version>
         <!-- spotbugs -->
-        <spotbugs.version>4.9.3</spotbugs.version>
-        <spotbugs-maven-plugin.version>4.9.3.0</spotbugs-maven-plugin.version>
+        <spotbugs.version>4.8.6</spotbugs.version>
+        <spotbugs-maven-plugin.version>4.8.6.0</spotbugs-maven-plugin.version>
         <findsecbugs.version>LATEST</findsecbugs.version>
         <spotbugs-slf4j.version>1.5.0</spotbugs-slf4j.version>
     </properties>
