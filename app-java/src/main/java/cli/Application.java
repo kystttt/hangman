@@ -1,23 +1,18 @@
 package cli;
 
-import academy.AppConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.util.Map;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-import static academy.AcceptanceTestExample.TEST_CASES_DUMMY;
-import static academy.AcceptanceTestExample.UNKNOWN_TEST_WORD;
 import static java.util.Objects.nonNull;
 
 @Command(name = "Application Example", version = "Example 1.0", mixinStandardHelpOptions = true)
@@ -56,16 +51,6 @@ public class Application implements Runnable {
         // ... logic
         if (IS_TESTING_MODE.test(config.words())) {
             LOGGER.atInfo().log("Non-interactive testing mode enabled");
-            // Используй вызов движка игры вместо хардкода тестовых данных
-            var word = config.words()[0];
-            var userInput = config.words()[1];
-            var result = TEST_CASES_DUMMY.getOrDefault(word, UNKNOWN_TEST_WORD).stream()
-                .filter(entry -> entry.getKey().test(userInput))
-                .findAny()
-                .map(Map.Entry::getValue)
-                .map(Supplier::get)
-                .orElse("Unknown answer");
-            System.out.println(result);
         } else {
             LOGGER.atInfo().log("Interactive mode enabled");
             System.out.println("Without args");

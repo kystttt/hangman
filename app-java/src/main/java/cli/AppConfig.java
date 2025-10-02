@@ -1,4 +1,4 @@
-package academy;
+package cli;
 
 import java.util.Arrays;
 import java.util.Objects;
