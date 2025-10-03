@@ -10,6 +10,15 @@ import domain.Game;
 public class HangmanRender implements Render{
     private static final String[] STAGES = {
         """
+            +
+            |
+            |
+            |
+            |
+            |
+      =========
+      """,
+        """
         +---+
         |   |
             |

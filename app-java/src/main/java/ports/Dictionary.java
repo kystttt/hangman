@@ -1,7 +1,7 @@
-package adapters;
+package ports;
 
 import domain.Category;
-import ports.WordSource;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

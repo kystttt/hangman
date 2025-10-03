@@ -68,6 +68,9 @@ public class Game {
         }
     }
 
+    /**
+     * Выводит загаданное слово с масками на месте неугоаданных букв
+     */
     private String masked(){
         StringBuilder result = new StringBuilder(secretWord.length());
         for (int i = 0; i < secretWord.length(); i++) {
@@ -108,5 +111,14 @@ public class Game {
         checkGuessWord(guess);
         String res = (status() == GameStatus.WON)? "POS" : "NEG";
         return masked() + ";" + res;
+    }
+
+    /**
+     * Помечает все буквы слова как использованные
+     */
+    public void hitsAll(String word){
+        for (int i = 0; i < word.length(); i++) {
+            hits.add(word.charAt(i));
+        }
     }
 }
