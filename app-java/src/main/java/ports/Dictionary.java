@@ -28,8 +28,8 @@ public class Dictionary implements WordSource {
      */
     public void addWord(Category category, String word) {
         List<String> words = dict.computeIfAbsent(category, k -> new ArrayList<>());
-        if (!words.contains(word)) {
-            words.add(word);
+        if (!words.contains(word.toLowerCase())) {
+            words.add(word.toLowerCase());
         }
     }
 
@@ -41,13 +41,11 @@ public class Dictionary implements WordSource {
      *         true  - в случае, если слово есть в словаре
      */
     public boolean isWordExist(Category category, String lookingWord){
-        for (String word : dict.get(category)){
-            if (word.equals(lookingWord)){
-                return true;
-            }
-        }
-        return false;
+        List<String> words = dict.get(category);
+        if (words == null) return false;
+        return words.contains(lookingWord);
     }
+
     /**
      * Приватный конструктор для реализации паттерна синглтон,
      * чтобы гарантировать единственный экземпляр

@@ -1,7 +1,10 @@
 package domain;
 
+import scan.IO;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 /**
  * Класс с основной логикой игры
@@ -11,6 +14,7 @@ public class Game {
     private final int maxGuesses;
     private final Set<Character> hits = new HashSet<>();
     private final Set<Character> misses = new HashSet<>();
+    private boolean hintShown = false;
 
     /**
      * Конструктор с заданными параметрами, где:
@@ -109,7 +113,8 @@ public class Game {
      */
     public String batchResult(String guess){
         checkGuessWord(guess);
-        String res = (status() == GameStatus.WON)? "POS" : "NEG";
+        IO io = new IO();
+        String res = io.returnEnd(status());
         return masked() + ";" + res;
     }
 
@@ -120,5 +125,58 @@ public class Game {
         for (int i = 0; i < word.length(); i++) {
             hits.add(word.charAt(i));
         }
+    }
+
+    /**
+     * Показывает количество неправильных букв
+     */
+    public int getMissesCount() { return misses.size(); }
+
+    /**
+     * Показывает количество допустипых ошибок
+     */
+    public int getMaxGuesses() { return maxGuesses; }
+
+    /**
+     * Возвращает маску слова
+     */
+    public String getMasked() { return masked(); }
+
+    /**
+     * Показывает использованные буквы
+     */
+    public String getUsedLetters() {
+        return Stream.concat(hits.stream(), misses.stream())
+            .map(String::valueOf)
+            .sorted()
+            .collect(Collectors.joining(", "));
+    }
+
+    /**
+     * Решает показывать ли подсказку в текущий момент игры или нет
+     */
+    public boolean shouldShowHint() {
+        return !hintShown && maxGuesses > 0 && getAttemptsLeft() <= maxGuesses / 2;
+    }
+
+    /**
+     * Помечает, что подсказка была показана
+     */
+    public void markHintShown() {
+        this.hintShown = true;
+    }
+
+    /**
+     * Показывает оставшиеся попытки
+     */
+    public int getAttemptsLeft() {
+        return Math.max(0, maxGuesses - misses.size());
+    }
+
+    /**
+     * Показывает загаданное слово
+     */
+    public String getSecretWord() {
+        return secretWord;
     }
 }
