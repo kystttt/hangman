@@ -114,7 +114,7 @@ public class Game {
     public String batchResult(String guess){
         checkGuessWord(guess);
         IO io = new IO();
-        String res = (status() == GameStatus.WON)? "POS" : "NEG";
+        String res = io.returnEnd(status());
         return masked() + ";" + res;
     }
 
