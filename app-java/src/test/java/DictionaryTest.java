@@ -20,7 +20,7 @@ public class DictionaryTest {
      * Проверяет что полученное слово, является элементом словаря
      */
     @Test
-    public void returnsWordFromCategoryList() {
+    public void returnsWordFromCategoryListTest() {
         Dictionary d = Dictionary.getInstance();
         d.addWord(Category.ITEM, "ручка");
         d.addWord(Category.ITEM, "стол");
@@ -32,7 +32,7 @@ public class DictionaryTest {
      * Проверяет что слово приводится к нужному регистру и независит от ввода
      */
     @Test
-    public void castWordToLowerCase(){
+    public void castWordToLowerCaseTest(){
         Dictionary d = Dictionary.getInstance();
         d.addWord(Category.ITEM, "РуЧка");
         d.addWord(Category.ITEM, "СТОЛ");

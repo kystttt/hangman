@@ -86,10 +86,20 @@ public class HangmanRender implements Render {
       """
     };
 
+    /**
+     * Конструктор класса в качестве пораметра передаются подсказки
+     * @param hints подсказки
+     */
     public HangmanRender(Hints hints) {
         this.hints = hints;
     }
 
+    /**
+     * Визуализация игры, печатает висилицу, маску слова, количество прописанных букв, остаток попыток
+     * @param game игра
+     * @param category категория слова
+     * @param difficulty сложность игры
+     */
     @Override
     public void draw(Game game, Category category, Difficulty difficulty){
         int misses = game.getMissesCount();
@@ -120,6 +130,13 @@ public class HangmanRender implements Render {
         double ratio = Math.min(1.0, Math.max(0.0, (double) misses / (double) maxGuesses));
         int idx = (int) Math.round(ratio * frames);
         return Math.max(0, Math.min(idx, frames));
+    }
+
+    /**
+     * Возвращает копию состояний висилицы
+     */
+    public String[] getStages() {
+        return STAGES.clone();
     }
 }
 

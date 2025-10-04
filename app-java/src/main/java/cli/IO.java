@@ -31,6 +31,11 @@ public class IO {
         if (f.isEmpty() || s.isEmpty()) {
             throw new IllegalArgumentException(Messages.NULL_ARGS);
         }
+
+        if (f.length() < 2 || s.length() < 2) {
+            throw new IllegalArgumentException("Invalid word length");
+        }
+
         if (!isAllLetters(f) || !isAllLetters(s)) {
             throw new IllegalArgumentException("Only letters are allowed");
         }

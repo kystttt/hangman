@@ -6,7 +6,7 @@ package out;
 public final class Messages {
     public static final String NULL_ARGS = "One of arguments is null";
     public static final String INTER_LETTER = "Inter one letter: ";
-    public static final String INCORRECT_LETTER = "Incorrrect letter\n Please try again";
+    public static final String INCORRECT_LETTER = "Incorrect letter\n Please try again";
     public static final String USED_LETTER = "Letter is used";
     public static final String CATEGORY_IS = "Category: ";
     public static final String DIFFICULTY_IS = "Difficulty: ";
