@@ -1,15 +1,15 @@
-package view;
+package cli;
 
 import domain.Category;
 import domain.Difficulty;
 import domain.Game;
-import ports.Hints;
-import scan.Messages;
+import adapters.Hints;
+import out.Messages;
 
 /**
  * Рисует висилицу поэтапно
  */
-public class HangmanRender implements Render{
+public class HangmanRender implements Render {
     private final Hints hints;
     private static final String[] STAGES = {
         """

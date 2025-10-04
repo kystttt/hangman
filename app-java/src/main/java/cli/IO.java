@@ -1,8 +1,10 @@
-package scan;
+package cli;
 
 import domain.Category;
 import domain.Difficulty;
 import domain.GameStatus;
+import out.Messages;
+
 import java.nio.charset.Charset;
 import java.util.Locale;
 
@@ -72,7 +74,7 @@ public class IO {
      * Просит ввести букву
      */
     public void outEnterMessage(){
-        System.out.println(Messages.INTER_LETTER);
+        System.out.print(Messages.INTER_LETTER);
     }
 
     /**
@@ -143,11 +145,4 @@ public class IO {
         System.out.println(mask);
     }
 
-    /**
-     * Печатает подсказку
-     * @param hint подсказка к слову
-     */
-    public void printHint(String hint) {
-        System.out.println(Messages.HINT + hint);
-    }
 }

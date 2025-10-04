@@ -1,6 +1,7 @@
-package ports;
+package adapters;
 
 import domain.Category;
+import domain.ports.WordSource;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,4 +63,9 @@ public class Dictionary implements WordSource {
         int idx = ThreadLocalRandom.current().nextInt(sizeOfCategoriesArray);
         return dict.get(category).get(idx);
     }
+
+    /**
+     * Очищать словарь, нужно для тестов
+     */
+    public void clear() { dict.clear(); }
 }

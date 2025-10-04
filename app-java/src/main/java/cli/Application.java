@@ -1,35 +1,12 @@
 package cli;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.io.UncheckedIOException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
-import java.util.function.Predicate;
 import domain.Category;
-import domain.Difficulty;
-import domain.Game;
-import domain.GameStatus;
-import domain.Result;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import picocli.CommandLine;
-import picocli.CommandLine.Command;
-import picocli.CommandLine.Option;
-import picocli.CommandLine.Parameters;
-import ports.Dictionary;
-import ports.Hints;
-import scan.IO;
-import view.HangmanRender;
-import static java.util.Objects.nonNull;
-//TODO: Сделай подсказки, почекай по поводу кодировки, сделай2 тесты, а также подсказки и вынеси раннекры отделььно
+import adapters.Dictionary;
+import adapters.Hints;
 
+/**
+ * Главный класс приложения, где запускаем программу
+ */
 public class Application  {
     private static IO io;
     Hints hints = new Hints();

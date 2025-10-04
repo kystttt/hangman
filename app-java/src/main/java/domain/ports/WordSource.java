@@ -1,4 +1,4 @@
-package ports;
+package domain.ports;
 
 import domain.Category;
 import domain.Difficulty;
