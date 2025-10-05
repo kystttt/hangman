@@ -7,10 +7,9 @@ import adapters.Hints;
 /**
  * Главный класс приложения, где запускаем программу
  */
-public class Application {
+public class Application  {
     private static IO io;
     Hints hints = new Hints();
-
     private static void seedDictionary(Dictionary dictionary) {
         dictionary.addWord(Category.ANIMAL, "бегемот");
         dictionary.addWord(Category.ANIMAL, "собака");
@@ -20,8 +19,8 @@ public class Application {
         dictionary.addWord(Category.ITEM, "парта");
         dictionary.addWord(Category.ITEM, "шезлонг");
         dictionary.addWord(Category.JOB, "Полицейский");
-    }
 
+    }
     private static void seedHints(Hints hints) {
         hints.addHint("бегемот", "Большое животное, живет в Африке");
         hints.addHint("собака", "Друг человека");
@@ -31,6 +30,7 @@ public class Application {
         hints.addHint("стол", "Есть в любом классе в школе");
         hints.addHint("Шезлонг", "Люди на нём проводят время у моря");
         hints.addHint("Полицейский", "Хранитель закона");
+
     }
 
     public static void main(String[] args) throws Exception {
@@ -46,7 +46,8 @@ public class Application {
         } else if (args.length == 0) {
             io = new IO();
             runner = new InteractiveRunner(IO.consoleCs(), io, dict, new HangmanRender(hints));
-        } else {
+        }
+        else{
             throw new IllegalArgumentException("Input Error!");
         }
         runner.run();
