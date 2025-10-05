@@ -7,6 +7,7 @@ import out.Messages;
 
 import java.nio.charset.Charset;
 import java.util.Locale;
+import java.util.Optional;
 
 
 /**
@@ -133,7 +134,6 @@ public class IO {
         return status == GameStatus.WON ? Messages.WINNER : Messages.LOSER;
     }
 
-
     /**
      * Выводит категорию слова и сложность игры
      * @param category
@@ -150,4 +150,25 @@ public class IO {
         System.out.println(mask);
     }
 
+    /**
+     * Просит ввести сложность игры
+     * @param input сложность игры
+     */
+    public Optional<Difficulty> parseDifficulty(String input) {
+        if (input == null) return Optional.of(Difficulty.getRandomDifficulty());
+
+        String s = input.trim();
+        if (s.isEmpty()) return Optional.of(Difficulty.getRandomDifficulty());
+
+        s = s.toUpperCase(Locale.ROOT);
+        switch (s) {
+            case "EASY":
+            case "MEDIUM":
+            case "HARD":
+                return Optional.of(Difficulty.valueOf(s));
+            default:
+                System.out.println(Messages.INTER_INCORRECT_DIFFICULTY);
+                return Optional.empty();
+        }
+    }
 }

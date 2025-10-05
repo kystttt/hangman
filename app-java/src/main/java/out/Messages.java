@@ -16,5 +16,8 @@ public final class Messages {
     public static final String WINNER = "WIN!";
     public static final String LOSER = "LOSE!";
     public static final String HINT = "Hint: ";
+    public static final String INTER_DIFFICULTY = "Please enter difficulty game (EASY/MEDIUM/HARD, empty = random): ";
+    public static final String INTER_INCORRECT_DIFFICULTY = "Incorrect difficulty. Type EASY, MEDIUM or HARD (empty =" +
+        " random). Try again:";
     private Messages(){}
 }

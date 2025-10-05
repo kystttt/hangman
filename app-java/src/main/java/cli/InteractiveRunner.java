@@ -6,6 +6,7 @@ import domain.Game;
 import domain.GameStatus;
 import domain.Result;
 import adapters.Dictionary;
+import out.Messages;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.nio.charset.Charset;
@@ -31,15 +32,22 @@ public class InteractiveRunner implements Runner {
     public void run() throws Exception {
         System.setOut(new PrintStream(System.out, true, cs));
         System.setErr(new PrintStream(System.err, true, cs));
-        Difficulty difficulty = Difficulty.getRandomDifficulty();
-        Category category = Category.getRandomCategory();
-        String secretWord = Dictionary.getInstance().getRandomWord(category);
-        int attempts = difficulty.attempts();
-        Game game = new Game(secretWord, attempts);
-        io.printMask(game.getMasked());
-        io.printDiffCat(category, difficulty);
         try (Scanner scanner = new Scanner(new InputStreamReader(System.in, cs))) {
+            Difficulty difficulty = null;
+            while (difficulty == null) {
+                System.out.print(Messages.INTER_DIFFICULTY);
+                var parsed = io.parseDifficulty(scanner.nextLine());
+                if (parsed.isPresent()) difficulty = parsed.get();
+            }
+            Category category = Category.getRandomCategory();
+            String secretWord = Dictionary.getInstance().getRandomWord(category);
+            int attempts = difficulty.attempts();
+            Game game = new Game(secretWord, attempts);
+            io.printMask(game.getMasked());
+            System.out.println("You have " + game.getAttemptsLeft() + " to miss!");
+            io.printDiffCat(category, difficulty);
             while (game.status() == GameStatus.IN_PROGRESS) {
+
                 io.outEnterMessage();
                 char letter = io.inputLetter(scanner.nextLine());
                 if (letter == '\0') {
