@@ -151,6 +151,13 @@ public class IO {
     }
 
     /**
+     * Выводит сообщение о некорректной сложности
+     */
+    private void printIncorrectDifficulty(){
+        System.out.println(Messages.INTER_INCORRECT_DIFFICULTY);
+    }
+
+    /**
      * Просит ввести сложность игры
      * @param input сложность игры
      */
@@ -167,7 +174,7 @@ public class IO {
             case "HARD":
                 return Optional.of(Difficulty.valueOf(s));
             default:
-                System.out.println(Messages.INTER_INCORRECT_DIFFICULTY);
+                printIncorrectDifficulty();
                 return Optional.empty();
         }
     }

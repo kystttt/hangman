@@ -5,12 +5,14 @@ import domain.GameStatus;
 import domain.Result;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
 public class GameStateTest {
     Game game;
     private HangmanRender render;
+    private List<String> stages;
 
     @BeforeEach
     void setUp() {
@@ -18,6 +20,7 @@ public class GameStateTest {
         hints.addHint("собака", "домашнее животное");
         hints.addHint("пенал", "для хранения письменных принадлежностей");
         render = new HangmanRender(hints);
+        stages = render.getStages();
 
     }
 
@@ -35,7 +38,7 @@ public class GameStateTest {
                   |
                   |
             =========
-            """, render.getStages()[0]);
+            """, stages.get(0));
 
         Result res1 = game.guessLetter('п');
         assertTrue(res1 == Result.HIT);
@@ -49,7 +52,7 @@ public class GameStateTest {
                   |
                   |
             =========
-            """, render.getStages()[0]);
+            """, stages.get(0));
 
         Result res2 = game.guessLetter('х');
         assertTrue(res2 == Result.MISS);
@@ -63,7 +66,7 @@ public class GameStateTest {
                   |
                   |
             =========
-            """, render.getStages()[1]);
+            """, stages.get(1));
 
         Result res3 = game.guessLetter('е');
         assertTrue(res3 == Result.HIT);
@@ -77,7 +80,7 @@ public class GameStateTest {
                   |
                   |
             =========
-            """, render.getStages()[1]);
+            """, stages.get(1));
 
         Result res4 = game.guessLetter('а');
         assertTrue(res4 == Result.HIT);
@@ -91,7 +94,7 @@ public class GameStateTest {
                   |
                   |
             =========
-            """, render.getStages()[1]);
+            """, stages.get(1));
 
 
         Result res5 = game.guessLetter('н');
@@ -106,7 +109,7 @@ public class GameStateTest {
                   |
                   |
             =========
-            """, render.getStages()[1]);
+            """, stages.get(1));
 
         Result res7 = game.guessLetter('н');
         assertTrue(res7 == Result.REPEAT);
@@ -120,7 +123,7 @@ public class GameStateTest {
                   |
                   |
             =========
-            """, render.getStages()[1]);
+            """, stages.get(1));
 
         Result res6 = game.guessLetter('л');
         assertTrue(res6 == Result.FINISH);
@@ -134,7 +137,7 @@ public class GameStateTest {
                   |
                   |
             =========
-            """, render.getStages()[1]);
+            """, stages.get(1));
     }
 
     @Test
@@ -157,7 +160,7 @@ public class GameStateTest {
                   |
                   |
             =========
-            """, render.getStages()[2]);
+            """, stages.get(2));
 
         Result res2 = game.guessLetter('о');
         assertTrue(res2 == Result.HIT);
@@ -171,7 +174,7 @@ public class GameStateTest {
                   |
                   |
             =========
-            """, render.getStages()[2]);
+            """, stages.get(2));
 
 
 
@@ -187,7 +190,7 @@ public class GameStateTest {
             |
             |
       =========
-      """, render.getStages()[4]);
+      """, stages.get(4));
 
         Result res4 = game.guessLetter('г');
         assertTrue(res4 == Result.MISS);
@@ -202,7 +205,7 @@ public class GameStateTest {
             |
             |
       =========
-      """, render.getStages()[5]);
+      """, stages.get(5));
 
         Result res5 = game.guessLetter('д');
         assertTrue(res5 == Result.FINISH);
@@ -217,6 +220,6 @@ public class GameStateTest {
        / \\  |
             |
       =========
-      """, render.getStages()[7]);
+      """, stages.get(7));
     }
 }
